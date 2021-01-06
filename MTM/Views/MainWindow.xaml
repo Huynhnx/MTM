@@ -1,0 +1,50 @@
+﻿<Window x:Class="MTM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MTM"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="MTM" Height="450" Width="800"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <GroupBox Header="Configuration" Margin="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Height="20" Width="200" Text="{Binding TestFolder, Mode=TwoWay}" Margin="22,13,158.667,53.667">
+                    </TextBox>
+                    <TextBox Height="20" Width="200" Text="{Binding MasterScript, Mode=TwoWay}" Margin="22,57,158.667,9.667">
+                    </TextBox>
+                    <Button Grid.Column="0" Content="Brown"  Height="20" Width="60" Margin="235,13,85.667,53.667" Command="{Binding BrownTestFoldercmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+                    </Button>
+                    <Button Grid.Column="0" Content="Select"  Height="20" Width="60" Command="{Binding SelectTestcaseCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}" Margin="311,14,9.8,54"/>
+                    <Button Grid.Column="0" Content="Script"  Height="20" Width="60" Margin="235,57,85.667,9.667" Command="{Binding SelectMasterScriptCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBox Margin="10" Text="{Binding Log, Mode=TwoWay}" TextWrapping="Wrap" ScrollViewer.CanContentScroll="True" TextChanged="TextBox_TextChanged">
+            </TextBox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button Content="Run" Width="60" Height="25" Command="{Binding RunMTMCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+            </Button>
+            <Button Content="Report" Width="60" Height="25" Command="{Binding RunReportCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}" Margin="442,3,291.6,2.4">
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
